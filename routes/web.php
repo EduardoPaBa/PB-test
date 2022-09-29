@@ -25,4 +25,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/alumnos', function () {
+        return view('alumnos');
+    })->name('alumnos');
 });
