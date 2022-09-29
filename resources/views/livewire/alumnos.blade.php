@@ -121,4 +121,33 @@
     </div>
   </div>
 
+  <div class="col-8">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Alumno</th>
+            <th scope="col">Grado</th>
+            <th scope="col">Materias</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            @foreach ($alumnos as $item)
+                <th scope="row">{{$item->id}}</th>
+                <td>{{$item->nombre}}</td>
+                <td>{{$item->grado->nombre}}</td>
+                <td>pendiente</td>
+            @endforeach
+
+          </tr>
+
+        </tbody>
+      </table>
+  </div>
+
+
+
+
 </div>
