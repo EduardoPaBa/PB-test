@@ -11,7 +11,10 @@ use Livewire\Component;
 class Alumnos extends Component
 {
     public $materias, $grados, $alumnos, $mateGrad,
-            $nombreMateri, $nombregrado;
+            $nombreMateri, $nombregrado,
+            $codigo, $nombre, $edad, $sexo, $grado_id, $observacion
+
+            ;
     public function mount() {
         $this->materias=Materia::All();
         $this->grados=Grado::All();
@@ -31,9 +34,18 @@ class Alumnos extends Component
         $this->clear();
         return session()->flash("success", "This is success message");
     }
+    public function saveGrad(){
+        $newValue = Grado::create([
+            'nombre' => $this->nombregrado,
+        ]);
+        $newValue->save();
+        $this->clear();
+        return session()->flash("success", "This is success message");
+    }
 
     public function clear()
     {
         $this->nombreMateri="";
+        $this->nombregrado="";
     }
 }
