@@ -12,7 +12,7 @@ class Alumnos extends Component
 {
     public $materias, $grados, $alumnos, $mateGrad,
             $nombreMateri, $nombregrado,
-            $codigo, $nombre, $edad, $sexo, $grado_id, $observacion
+            $codigo, $nombre, $edad, $sexo, $grado_id, $observacion, $valueeee
             ;
     protected $rules = [
 
@@ -29,6 +29,7 @@ class Alumnos extends Component
         $this->grados=Grado::All();
         $this->alumnos=Alumno::All();
         $this->mateGrad=MateriaGrado::All();
+        $this->valueeee= "f";
     }
     public function render()
     {
@@ -70,6 +71,18 @@ class Alumnos extends Component
         $this->clear();
         $this->alumnos=Alumno::All();
         return session()->flash("success", "This is success message");
+    }
+
+    public function delete($value)
+    {
+        $this->valueeee = $value;
+
+    }
+    public function delete_now()
+    {
+        Alumno::find($this->valueeee)->delete();
+        $this->alumnos=Alumno::All();
+        return session()->flash("success", "Se elimino correctamente");
     }
 
     public function clear()
