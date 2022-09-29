@@ -15,6 +15,10 @@ class CreateMateriaGradosTable extends Migration
     {
         Schema::create('materia_grados', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('grado_id');
+            $table->foreign('grado_id')->references('id')->on('grados');
+            $table->unsignedBigInteger('materia_id');
+            $table->foreign('materia_id')->references('id')->on('materias');
             $table->timestamps();
         });
     }
